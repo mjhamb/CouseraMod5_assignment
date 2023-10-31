@@ -1,8 +1,6 @@
 pipeline {
     agent {
-        node {
-            label 'Windows 10'  // Correct the label to match your agent's label
-        }
+        agent any // ...
     }
     stages {
         stage('Build') {
