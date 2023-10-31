@@ -1,34 +1,12 @@
+Jenkinsfile (Declarative Pipeline)
+/* Requires the Docker Pipeline plugin */
 pipeline {
-    agent {
-        label 'Windows 10'
-    }
+    agent { docker { image 'node:20.9.0-alpine3.18' } }
     stages {
-        stage('Build') {
+        stage('build') {
             steps {
-                // Use the appropriate build command
-                bat 'npm install'
+                sh 'node --version'
             }
-        }
-        stage('Test') {
-            steps {
-                // Use the appropriate test command
-                bat 'npm test'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                // Use Windows-compatible command for deployment using robocopy
-                bat 'robocopy C:\\path\\to\\your\\workspace\\dist \\\\server\\path\\to\\deployment\\directory /mir'
-            }
-        }
-    }
-    post {
-        success {
-            echo 'Build successful! Deploy your application.'
-        }
-        failure {
-            echo 'Build failed. Check your code and build process.'
         }
     }
 }
-
