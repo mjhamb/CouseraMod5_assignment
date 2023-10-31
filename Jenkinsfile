@@ -1,28 +1,27 @@
 pipeline {
-    agent any
-    stages {
-        stage('Checkout') {
-            steps {
-                checkout([
-                    $class: 'GitSCM',
-                    branches: [[name: '*/main']],
-                    userRemoteConfigs: [[url: 'https://github.com/mjhamb/couseraMod5_assignment.git']]
-                ])
-            }
+    agent {
+        node {
+            label 'your-windows-agent-label'
+            customWorkspace 'C:\\path\\to\\your\\workspace'
         }
+    }
+    stages {
         stage('Build') {
             steps {
-                sh 'npm install'  // Use the appropriate build command
+                // Use the appropriate build command
+                bat 'npm install'
             }
         }
         stage('Test') {
             steps {
-                sh 'npm test'  // Use the appropriate test command
+                // Use the appropriate test command
+                bat 'npm test'
             }
         }
         stage('Deploy') {
             steps {
-                sh 'rsync -avz ./dist/ user@server:/path/to/deployment/directory'
+                // Use Windows-compatible command for deployment, e.g., xcopy or robocopy
+                bat 'xcopy /s C:\\path\\to\\your\\workspace\\dist user@server:/path/to/deployment/directory'
             }
         }
     }
