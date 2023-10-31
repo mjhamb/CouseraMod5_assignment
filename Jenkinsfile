@@ -20,8 +20,8 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                // Use Windows-compatible command for deployment, e.g., xcopy or robocopy
-                bat 'xcopy /s C:\\path\\to\\your\\workspace\\dist user@server:/path/to/deployment/directory'
+                // Use Windows-compatible command for deployment using robocopy
+                bat 'robocopy C:\\path\\to\\your\\workspace\\dist \\\\server\\path\\to\\deployment\\directory /mir'
             }
         }
     }
