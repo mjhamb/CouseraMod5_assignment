@@ -2,8 +2,6 @@ pipeline {
     agent {
         label 'Windows 10'
     }
-     // ...
-    }
     stages {
         stage('Build') {
             steps {
@@ -32,4 +30,5 @@ pipeline {
             echo 'Build failed. Check your code and build process.'
         }
     }
+}
 
