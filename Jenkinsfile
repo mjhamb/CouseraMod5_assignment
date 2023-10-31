@@ -32,7 +32,7 @@ pipeline {
                 sh 'rsync -avz ./dist/ user@server:/path/to/deployment/directory'
             }
         }
-    }
+    
 
     post {
         success {
