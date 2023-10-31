@@ -1,13 +1,15 @@
 pipeline {
     agent any
-
     stages {
         stage('Checkout') {
             steps {
-                // Checkout the source code from the Git repository
-                git(url: 'https://github.com/mjhamb/couseraMod5_assignment.git', branch: 'main')
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/mjhamb/couseraMod5_assignment.git']]])
             }
         }
+        // Add more stages for your build and deployment
+    }
+}
+
 
         stage('Build') {
             steps {
