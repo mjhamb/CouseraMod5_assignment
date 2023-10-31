@@ -1,7 +1,7 @@
 pipeline {
     agent {
         node {
-            label 'your-windows-agent-label'
+            label 'windows 10'  // Correct the label to match your agent's label
             customWorkspace 'C:\\path\\to\\your\\workspace'
         }
     }
